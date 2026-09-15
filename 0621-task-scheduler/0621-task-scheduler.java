@@ -15,7 +15,7 @@ class Solution {
             maxFreq = Math.max(maxFreq, count);
         }
 
-        // Number of tasks having maximum frequency
+        // Count how many tasks have the maximum frequency
         int maxCount = 0;
 
         for (int count : freq) {
@@ -24,23 +24,11 @@ class Solution {
             }
         }
 
-        /*
-         * Arrange the most frequent tasks first.
-         *
-         * Example:
-         * A A A
-         * B B B
-         *
-         * n = 2
-         *
-         * A B _ A B _ A B
-         *
-         * Formula:
-         * (maxFreq - 1) * (n + 1) + maxCount
-         */
-        int result = (maxFreq - 1) * (n + 1) + maxCount;
+        // Calculate minimum intervals
+        int intervals = (maxFreq - 1) * (n + 1) + maxCount;
 
-        // We cannot have fewer intervals than the number of tasks.
-        return Math.max(result, tasks.length);
+        // If there are enough different tasks to fill the gaps,
+        // no idle time is needed.
+        return Math.max(intervals, tasks.length);
     }
 }
